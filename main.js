@@ -12,9 +12,11 @@ function fetchIssues(status = 'all'){
         }
     }
     
-    if (issues.length > 0){
-        var issuesList = document.getElementById('issuesList');
-
+    var issuesList = document.getElementById('issuesList');
+    if (typeof issues != "undefined"  
+                        && issues != null  
+                        && issues.length != null  
+                        && issues.length > 0) {        
         issuesList.innerHTML = '';
         for (var i = 0; i < issues.length; i++){
             var id = issues[i].id;
@@ -35,7 +37,9 @@ function fetchIssues(status = 'all'){
                                         '<h6>Issue ID: ' + id + '</h6>'
                                     '</div>';
         }
-    }
+    } else {
+		issuesList.innerHTML = '<p>No issues to show</p>'
+	}
 }
 
 function saveIssue(e){
